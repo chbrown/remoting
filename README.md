@@ -47,14 +47,15 @@ If no hosts in the list work, return None.
 Not really a remoting feature, but mostly useful because networking takes forever.
 
 Run the function `def monkeywrenchit(target, intensity):` and raise `remoting.timeout.Expired` if it doesn't
-return a value within 45 seconds. The `a` argument gets set to "the rusty knob".
+return a value within 45 seconds. The `target` argument gets set to "the rusty knob".
 
     from remoting import timeout
     doit = timeout.wrap(monkeywrenchit, 45)
     doit('the rusty knob', 98)
 
 Do the same thing, but instead of raising an error, simply returning none when it times out, *if* it times out.
-`monkeywrenchit` should not ever return `None` when it works, or else you can't know if it times out or not.
+`monkeywrenchit` should not ever return `None` when it works, or else you can't know if it times out or completes
+successfully, but returns a `None` value.
 
     # ...
     timeout.run(monkeywrenchit, 45, 'the rusty knob', 98)

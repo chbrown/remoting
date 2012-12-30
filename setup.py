@@ -11,7 +11,6 @@ setup(
     include_package_data=False,
     zip_safe=True,
     install_requires=[
-        'redis',
         'pycurl',
     ]
 )
